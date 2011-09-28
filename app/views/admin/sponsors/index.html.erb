@@ -1,0 +1,40 @@
+<h2>Sponsors</h2>
+<table>
+  <thead>
+	<tr>
+		<th>Name<th>
+		<th>Address<th>
+		<th>City<th>
+		<th>Zipcode<th>
+		<th>Contact Name<th>
+		<th>Contact Phone<th>
+		<th>Business Phone<th>
+		<th>Verified<th>
+	</tr>
+  </thead>
+  <tbody>
+  <% @sponsors.each do |sponsor| %>
+	<tr class="<%= cycle "even", "odd" %>">
+	  <td><%= sponsor.name %><td>
+	  <td><%= sponsor.address %><td>
+	  <td><%= sponsor.city %><td>
+      <td><%= sponsor.zipcode %><td>
+      <td><%= sponsor.contact_name %><td>
+	  <td><%= sponsor.contact_phone %><td>
+	  <td><%= sponsor.business_phone %><td>
+	  <td>
+	    <div id="status_<%= sponsor.id%>">
+		  <%= sponsor.is_verified ? 'yes' : 'nope' %>
+		  <%= link_to "Verify", verify_admin_sponsor_path(sponsor), 'data-remote' => true, 'data-method' => 'get' unless sponsor.is_verified %>
+		  <%= link_to "Deny", deny_admin_sponsor_path(sponsor), 'data-remote' => true, 'data-method' => 'get' if sponsor.is_verified %>
+		<div>
+	  </td>
+	</tr>
+  <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+	  <td colspan=9><%= paginate @sponsors %><td>
+	</tr>
+  </tfoot>
+</table>

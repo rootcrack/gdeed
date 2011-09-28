@@ -1,0 +1,22 @@
+<h2>Charities</h2>
+<table>
+  <thead>
+	<tr>
+		<th>Name<th>
+		<th>&nbsp;<th>
+	</tr>
+  </thead>
+  <tbody>
+  <% @charities.each do |charity| %>
+	<tr class="<%= cycle "even", "odd" %>">
+	  <td><%= charity.name %><td>
+	  <td></td>
+	</tr>
+  <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+	  <td colspan=9><%= paginate @charities %><td>
+	</tr>
+  </tfoot>
+</table>

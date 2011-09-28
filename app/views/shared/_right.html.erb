@@ -1,0 +1,17 @@
+<div class="rightsec">
+	<div class="give_ons">
+        <%= render_cell :give_on, :display %>
+    </div><!--end of give_ons-->
+
+	<div class="stories_topwrap">
+    	<div class="stories_btmwrap">
+        	<div class="stories_midwrap">
+
+            	<%= render_cell :success_story, :display %>
+				
+				<p class="button"><%= link_to image_tag("/images/button_viewallstories.png", :width=> 185, :height=>29, :border=>0), stories_path %></p>
+				
+            </div><!--end of stories_midwrap-->
+        </div><!--end of stories_btmwrap-->
+    </div><!--end of sotries_topwrap-->
+</div><!--end of rightsec-->

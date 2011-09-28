@@ -1,0 +1,32 @@
+<h2>Giveons</h2>
+<table>
+  <thead>
+	<tr>
+		<th>Name</th>
+		<th>Amount</th>
+		<th>Charity</th>
+		<th>Sponsor</th>
+		<th>Type</th>
+		<th>Address</th>
+		<th>Status</th>
+	</tr>
+  </thead>
+  <tbody>
+  <% @giveons.each do |giveon| %>
+    <tr class="<%= cycle "even", "odd" %>">
+	  <td><%= giveon.name%></td>
+	  <td><%= number_to_currency giveon.amount%></td>
+	  <td><%= giveon.deed.charity.name%></td>
+	  <td><%= giveon.deed.sponsor.name%></td>
+	  <td><%= giveon.purchase_type%></td>
+	  <td><%= giveon.address %> <%= giveon.city %> <%= giveon.state %> <%= giveon.zipcode %></td>
+	  <td><%= giveon.status %></td>
+	</tr>
+  <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+	  <td colspan=9><%= paginate @giveons %><td>
+	</tr>
+  </tfoot>
+</table>

@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>GratefulDeed</title>
+    <%= include_stylesheets :base, :app %>
+	<%= include_javascripts :base %>
+    
+	<script type="text/javascript">    
+    function slideSwitch() {
+        var $active = $('#slideshow IMG.active');
+    
+        if ( $active.length == 0 ) $active = $('#slideshow IMG:last');
+    
+        // use this to pull the images in the order they appear in the markup
+        var $next =  $active.next().length ? $active.next()
+            : $('#slideshow IMG:first');
+    
+        // uncomment the 3 lines below to pull the images in random order
+        
+        // var $sibs  = $active.siblings();
+        // var rndNum = Math.floor(Math.random() * $sibs.length );
+        // var $next  = $( $sibs[ rndNum ] );
+
+        $active.addClass('last-active');
+    
+        $next.css({opacity: 0.0})
+            .addClass('active')
+            .animate({opacity: 1.0}, 1000, function() {
+                $active.removeClass('active last-active');
+            });
+    }
+    
+    $(function() {
+        setInterval( "slideSwitch()", 3000 );
+    });
+    </script>
+</head>
+
+<body>
+	<div id="notification" class="notify"></div> 
+	<div class="container">
+    	<div class="shadow_wrap">
+        	<div class="header">
+            	<div class="logo">
+					<%= link_to image_tag("/images/logo_gratefuldeed.png", :alt => "GratefulDeed", :width => 334, :height => 85), root_url %>
+                </div><!--end of logo-->
+                <div class="taglines">
+                	<div id="slideshow">
+						<%= image_tag "/images/taglines/tagline1.jpg", :alt => "Donate a few bucks to charity", :class => "active" %>
+						<%= image_tag "/images/taglines/tagline2.jpg", :alt => "Invite friends &amp; family to join you" %>
+                    </div>
+                </div><!--end of taglines-->
+                <div class="socialmedia">
+                	<ul>
+						<li><p><%= image_tag "/images/img_seeuson.png", :alt => "See Us On", :width => 52, :height => 15 %></p></li>
+						<li><%= link_to image_tag("/images/img_facebook.png", :alt => "Facebook", :width => 30, :height => 47), "#" %></li>
+						<li><%= link_to image_tag("/images/img_twitter.png", :alt => "Twitter", :width => 30, :height => 47), "#" %></li>
+                    </ul>
+                </div><!--end of socialmedia-->
+                <div class="clear"></div><!--end of clear-->
+            </div><!--end of header-->
+            <div class="topnavwrap">
+            	<div class="topnavleftwrap">
+                	<div class="topnavrightwrap">
+                    	<%= render "layouts/header"%>
+                    </div><!--end of topnavrightwrap-->
+                </div><!--end of topnavleftwrap-->
+            </div><!--end of topnavwrap-->
+            <div class="pagebody_topwrap">
+            	<div class="pagebody_btmwrap">
+                	<div class="pagebody_midwrap">
+                    	<div class="majorsponsor">
+                        	<div class="majorsponsor_leftwrap">
+                            	<div class="majorsponsor_rightwrap">
+                                	<div class="majorsponsor_midwrap">
+                                    	<h6>BROUGHT TO YOU BY</h6>
+										<div class="msponsor_container">
+											<div class="msponsor_logowrap">
+										    	<a href="#"><img src="/images/majorsponsor_sample1.jpg" alt="" width="144" height="87" /></a>
+										    </div><!--end of msponsor_logowrap-->
+											<div class="msponsor_logowrap">
+										    	<a href="#"><img src="/images/majorsponsor_sample2.jpg" alt="" width="144" height="87" /></a>
+										    </div><!--end of msponsor_logowrap-->
+											<div class="msponsor_logowrap">
+										    	<a href="#"><img src="/images/majorsponsor_sample3.jpg" alt="" width="144" height="87" /></a>
+										    </div><!--end of msponsor_logowrap-->
+											<div class="msponsor_logowrap">
+										    	<a href="#"><img src="/images/majorsponsor_sample4.jpg" alt="" width="144" height="87" /></a>
+										    </div><!--end of msponsor_logowrap-->
+											<div class="msponsor_logowrap clr_margin">
+										    	<a href="#"><img src="/images/majorsponsor_sample5.jpg" alt="" width="144" height="87" /></a>
+										    </div><!--end of msponsor_logowrap-->
+											<div class="clear"></div><!--end of clear-->
+										</div><!--end of msponsor_container-->
+                                    </div><!--end of majorsponsor_midwrap-->
+                                </div><!--end of majorsponsor_rightwrap-->
+                            </div><!--end of majorsponsor_leftwrap-->
+                        </div><!--end of majorsponsor-->
+                        <%= render "shared/left"%>
+                        <div class="content">
+                        <%= yield %>
+                        </div><!--end of content-->
+						<%= render "shared/right"%>
+                        <div class="clear"></div><!--end of clear-->
+						
+                    </div><!--end of pagebody_midwrap-->
+                </div><!--end of pagebdoy_btmwrap-->
+            </div><!--end of pagebody_topwrap-->
+        </div><!--end of shadow_wrap-->
+        <div class="footer_clear"></div><!--end of footer_clear-->
+    </div><!--end of container-->
+    <%= render "layouts/footer"%>
+</body>
+  <%
+    message_type, message_body = flash.first
+    safe_message_type = escape_javascript(message_type.to_s)
+    safe_message_body = escape_javascript(message_body.to_s)
+  %>
+  <% unless safe_message_body.empty? %>
+    <%= javascript_tag do %>
+      GratefulDeed.notify("<%= safe_message_body %>", {"type": "<%= safe_message_type %>"});
+    <% end %>
+  <% end %>
+  <script type="text/javascript">
+  (function() {
+    var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+    uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/yk1PTjzYqQMvFfEP5fclxQ.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+  })();
+</script>
+</html>

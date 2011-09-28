@@ -1,0 +1,11 @@
+<div class="content">
+	<h1><%= @charity.name %></h1>
+	<%= image_tag @charity.user.logo.url %>
+	<div class="donations">
+		<ul>
+		<% @deeds.each do |deed| %>
+			<li>Received <%= number_to_currency deed.amount %> donation from <%= image_tag deed.sponsor.user.logo.url %></li>
+		<% end %>
+		<ul>
+	</div>
+</div>

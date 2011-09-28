@@ -1,0 +1,2 @@
+module Charity::DashboardHelper
+end

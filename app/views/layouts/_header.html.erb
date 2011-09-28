@@ -1,0 +1,23 @@
+<div class="topnavmidwrap">
+	<div class="topnav">
+    	<ul class="menu"> 
+            <li><%= link_to "Home", root_url %></li>
+			<li><%= link_to "About Us", home_about_path%></li>
+			<li><%= link_to "Contact Us", home_contactus_path%></li>
+        </ul>
+    </div><!--end of topnav-->
+    <div class="usernav">
+    	<ul>
+        	<% unless user_signed_in? %>
+			  <li><%= link_to "Enroll", new_user_registration_url %></li> 
+			  <li>|</li> 
+			  <li><%= link_to "Login", new_user_session_url %></li>
+			  <% else %>
+			  <li><%= link_to "Account", edit_user_registration_url %></li>
+			  <li>|</li> 
+			  <li><%= link_to "Logout", destroy_user_session_url %></li>
+			  <% end %>
+        </ul>
+    </div><!--end of usernav-->
+    <div class="clear"></div><!--end of clear-->
+</div><!--end of topnavmidwrap-->

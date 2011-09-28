@@ -1,0 +1,11 @@
+<h1>Charities</h1>
+<div id="charities">
+  <ul>
+  <% @charities.each do |charity| %>
+    <li>
+	  <%= link_to image_tag(charity.user.logo.url), charity_path(charity) %><br/>
+      <%= link_to charity.name, charity_path(charity) %>
+    </li>
+  <% end %>
+  </ul>
+</div>

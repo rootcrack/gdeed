@@ -1,0 +1,41 @@
+<div class="leftsec_topwrap">
+	<div class="leftsec_btmwrap">
+    	<div class="leftsec_midwrap">
+        	<div class="leftmenu">
+			   <h5>Quick Links</h5>
+			   <ul>
+			   	<li><%= link_to "How it Works", home_how_it_works_url%></li>
+			   	<li><%= link_to "My Benefactor Wall", home_wall_url %></li>
+			   	<li><%= link_to "Tell Friends", ""%></li>
+			   	<li><%= link_to "Create a Grateful Deed", new_deed_url%></li>
+        	   
+			     <% if user_signed_in? && !current_user.is_a_charity? %>
+			     <li><%= link_to "This is a charity account", new_charity_url %></li>
+			     <% end %>
+        	   
+			     <li><%= link_to "Sponsors", sponsors_url%></li>
+			   	<li><%= link_to "Charities", charities_url%></li>
+			     <li><%= link_to "Current Deeds", home_deeds_url%></li>
+			   </ul>
+			</div>
+			
+			<%= admin_area do  %>
+				<h5 class="orange">Admin Menu</h5>
+				<ul>
+				<li><%= link_to "Deeds", admin_deeds_url%></li>
+				<li><%= link_to "Purchases", admin_giveons_url%></li>
+				<li><%= link_to "Sponsors", admin_sponsors_url%></li>
+				<li><%= link_to "Charities", admin_charities_url%></li>
+				<li><%= link_to "Success Stories", admin_stories_url%></li>
+				</ul>
+			<% end %>
+			<%= sponsor_area do %>
+				<h5 class="green">Sponsor's Menu</h5>
+				<ul>
+					<li><%= link_to "Grateful Deeds", deeds_url%></li>
+				<li><%= link_to "Create a Grateful Deed", new_deed_url%></li>
+				</ul>
+			<% end %>
+        </div><!--end of leftsec_midwrap-->
+    </div><!--end of leftsec_btmwrap-->
+</div><!--end of leftsec_topwrap-->

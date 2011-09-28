@@ -1,0 +1,11 @@
+<h1>Deeds</h1>
+<div id="deeds">
+  <ul>
+  <% @deeds.each do |deed| %>
+    <li>
+		<%= "#{deed.amount} donation to #{deed.charity.name} - #{deed.status}" %>
+		<%= link_to "Buy Deed", purchase_deed_path(deed)%>
+	</li>
+  <% end %>
+  </ul>
+</div>

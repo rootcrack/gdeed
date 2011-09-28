@@ -1,0 +1,11 @@
+<h1>Current Deeds</h1>
+<div id="deeds">
+  <ul>
+  <% @deeds.each do |deed| %>
+    <li>
+		<%= link_to deed.sponsor.name, sponsor_path(deed.sponsor) %> donated <%= number_to_currency deed.amount %> to <%= link_to deed.charity.name, charity_path(deed.charity) %>
+		<%= link_to "Buy Deed", purchase_deed_path(deed)%>
+	</li>
+  <% end %>
+  </ul>
+</div>

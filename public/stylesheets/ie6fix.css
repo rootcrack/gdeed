@@ -1,0 +1,2 @@
+body { behavior: url(csshover3.htc); }
+div, a, li, input { behavior: url(iepngfix.htc) }

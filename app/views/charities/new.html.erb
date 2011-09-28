@@ -1,0 +1,18 @@
+<div class="form_wrapper">
+	<div class="form_heading">
+		<h5>Create a Charity Account</h5>
+	</div><!--end of form_heading-->
+	<div class="form_leftwrap">
+		<div class="form_rightwrap">
+	    	<div class="form_midwrap">
+	        	<%= form_for @charity, :url => charities_path do |f| %>
+	            	<%= f.label :name %>
+	                <div class="textbox_wrapper">
+	                	<%= f.text_field :name, :class => "textbox" %>
+	                </div><!--end of textbox_wrapper-->
+	                <input type="image" src="/images/button_save.png" alt="Save" class="button" />
+	            <% end %>
+	        </div><!--end of form_midwrap-->
+	    </div><!--end of form_rightwrap-->
+	</div><!--end of form_leftwrap-->
+</div>

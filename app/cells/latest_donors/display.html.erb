@@ -1,0 +1,13 @@
+<h1>Latest Donors</h1>
+
+<div class="latest_donors">
+	<ul>
+		<% @giveons.each do |giveon|%>
+		<li>
+			<%= image_tag giveon.user.logo.url %>
+			Donor bought <%= number_to_currency giveon.amount %> give-on for <%= giveon.deed.charity.name %>.<br/>
+			Sponsored by: <%= giveon.deed.sponsor.name %>
+		</li>
+		<% end %>
+	</ul>
+</div>

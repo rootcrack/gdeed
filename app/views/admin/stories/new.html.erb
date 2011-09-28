@@ -1,0 +1,23 @@
+<div class="content">
+	<div class="form_wrapper">
+    	<div class="form_heading">
+        	<h5>Update Story</h5>
+        </div><!--end of form_heading-->
+        <div class="form_leftwrap">
+        	<div class="form_rightwrap">
+            	<div class="form_midwrap">
+<%= form_for @story, :url => admin_stories_path do |f| %>
+<%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+					<div class="clear"></div><!--end of clear-->
+                    <ul class="pagenav">
+                    	<li>
+						<%= link_to 'Back', admin_stories_path, :class => "back" %>
+						</li>
+                    </ul>
+                    <div class="clear"></div><!--end of clear-->
+                </div><!--end of form_midwrap-->
+            </div><!--end of form_rightwrap-->
+        </div><!--end of form_leftwrap-->
+    </div><!--end of form_wrapper-->
+</div><!--end of content-->

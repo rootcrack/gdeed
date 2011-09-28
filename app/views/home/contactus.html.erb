@@ -1,0 +1,34 @@
+<div class="contactus">
+	<div class="form_heading">
+    	<h5>Contact Us</h5>
+    </div><!--end of form_heading-->
+    <div class="form_leftwrap">
+    	<div class="form_rightwrap">
+        	<div class="form_midwrap">
+            	<%= form_for :email, :url => { :controller => 'home', :action => 'contactus' } do |f| %>
+                	<label>Full Name:</label>
+                    <div class="textbox_wrapper">
+                    	<%= f.text_field :name, :class => "textbox" %>
+                    </div><!--end of textbox_wrapper-->
+					<label>Email Address:</label>
+                    <div class="textbox_wrapper">
+                    	<%= f.text_field :address, :class => "textbox" %>
+                    </div><!--end of textbox_wrapper-->
+					<p class="infonote">We promise not to share your email address to others.</p>
+					<label>Subject:</label>
+                    <div class="textbox_wrapper">
+                    	<%= f.text_field :subject, :class => "textbox" %>
+                    </div><!--end of textbox_wrapper-->
+					<label>Your Message:</label>
+					<div class="textarea_wrapper">
+						<%= f.text_area :body, :rols => 10, :cols => 60 %>
+					</div><!--end of textarea_wrapper-->
+                    <div class="form_btmwrap">
+                        <input type="image" src="/images/button_sendmail.png" alt="Send Email" class="button" />
+                        <div class="clear"></div><!--end of clear-->
+                    </div><!--end of form_btmwrap-->
+                <% end %>
+            </div><!--end of form_midwrap-->
+        </div><!--end of form_rightwrap-->
+    </div><!--end of form_leftwrap-->
+</div><!--end of contactus-->

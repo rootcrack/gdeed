@@ -1,0 +1,26 @@
+<h2>Users</h2>
+<table>
+  <thead>
+	<tr>
+		<th>Username<th>
+		<th>Name<th>
+		<th>Email<th>
+		<th>&nbsp;<th>
+	</tr>
+  </thead>
+  <tbody>
+  <% @users.each do |users| %>
+	<tr class="<%= cycle "even", "odd" %>">
+	  <td><%= users.username %><td>
+	  <td><%= users.name %><td>
+	  <td><%= users.email %><td>
+	  <td></td>
+	</tr>
+  <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+	  <td colspan=4><%= paginate @users %><td>
+	</tr>
+  </tfoot>
+</table>

@@ -1,0 +1,26 @@
+#notification {
+  display: none;
+  font-size: 13px;
+  position: fixed;
+  text-align: center;
+  top: 10px;
+  width: 960px;
+}
+
+#notification span {
+  background: #FEFFBB;
+  display: inline-block;
+  padding: 8px 10px;
+  position: relative;
+  z-index: 65535;
+
+  -border-radius: 5px;
+  -moz-border-radius: 5px;
+  -moz-box-shadow: 1px 1px 3px #BBBBBB;
+  -webkit-border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 3px #BBBBBB;
+}
+
+#notification .error, #notification .alert {
+  background: #FFC0C0;
+}

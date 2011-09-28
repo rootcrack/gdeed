@@ -1,0 +1,124 @@
+<% unless @spotlight.nil? %>
+<div class="greycontainer_topwrap">
+  <div class="greycontainer_btmwrap">
+      <div class="greycontainer_midwrap">
+          <div class="timeremaining_wrap">
+              <div class="wrapper">
+                  <h4><div id="countdown"></div></h4>
+                    <p>Remaining Time</p>
+                </div><!--end of wrapper-->
+            </div><!--end of timeremaingin_wrap-->
+            <h3 class="countdown_title">CURRENT <span>DEED</span></h3>
+			<%= link_to "Click_HERE_to_Buy_Deed", purchase_deed_path(@spotlight.deed), :class => "countdown_button"%>
+            <div class="clear"></div><!--end of clear-->
+        </div><!--end of greycontainer_midwrap-->
+    </div><!--end of greycontainer_btmwrap-->
+</div><!--end of greycontainer_topwrap-->
+  
+<div class="greycontainer_topwrap">
+  <div class="greycontainer_btmwrap">
+      <div class="greycontainer_midwrap">
+          <div class="donationpurchase_midwrap">
+              <div class="donationpurchase_topwrap">
+                  <div class="donationpurchase_btmwrap">
+                      <div class="amountbox_topwrap">
+                          <div class="amountbox_btmwrap">
+                              <div class="amountbox_midwrap">
+                                  <p><%= number_to_currency @spotlight.deed.price %> </p>
+                                </div><!--end of amountbox_midwrap-->
+                            </div><!--end of amountbox_btmwrap-->
+                        </div><!--end of amountbox_topwrap-->
+                        <div class="textwrapper">
+                          <p>Your Donation Purchase</p>
+                        </div><!--end of textwrapper-->
+                      <div class="clear"></div><!--end of clear-->
+                    </div><!--end of donationpurchase_btmwrap-->
+                </div><!--end of donationpurchase_topwrap-->
+            </div><!--end of donationpurchase_midwrap-->
+            <div class="donationpurchase_imgwrap">
+              <img src="/images/sample_pic1.jpg" alt="" />
+            </div><!--end of donationpurchase_imgwrap-->
+            <div class="clear"></div><!--end of clear-->
+            <div class="signwrap">
+              <img src="/images/img_plus.png" alt="" width="24" height="24" />
+            </div><!--end of signwrap-->
+            <div class="clear"></div><!--end of clear-->
+            <div class="matchingcon_midwrap">
+              <div class="matchingcon_topwrap">
+                  <div class="matchingcon_btmwrap">
+                      <div class="amountbox_topwrap">
+                          <div class="amountbox_btmwrap">
+                              <div class="amountbox_midwrap">
+                                  <p><%= number_to_currency @spotlight.deed.contribution %></p>
+                                </div><!--end of amountbox_midwrap-->
+                            </div><!--end of amountbox_btmwrap-->
+                        </div><!--end of amountbox_topwrap-->
+                        <div class="textwrapper">
+                          <p>Will generate a matching contribution from sponsor in this amount</p>
+                        </div><!--end of textwrapper-->
+                      <div class="clear"></div><!--end of clear-->
+                    </div><!--end of matchingcon_btmwrap-->
+                </div><!--end of matchingcon_topwrap-->
+            </div><!--end of matchingcon_midwrap-->
+            <div class="matchingcon_imgwrap">
+              <%= image_tag @spotlight.deed.sponsor.user.logo.url %>
+            </div><!--end of matchingcon_imgwrap-->
+            <div class="clear"></div><!--end of clear-->
+            <div class="signwrap">
+              <img src="/images/img_equal.png" alt="" width="24" height="24" />
+            </div><!--end of signwrap-->
+            <div class="clear"></div><!--end of clear-->
+            <div class="charityrecieved_midwrap">
+              <div class="charityrecieved_topwrap">
+                  <div class="charityrecieved_btmwrap">
+                      <div class="amountbox_topwrap">
+                          <div class="amountbox_btmwrap">
+                              <div class="amountbox_midwrap">
+                                  <p><%= number_to_currency @contribution %></p>
+                                </div><!--end of amountbox_midwrap-->
+                            </div><!--end of amountbox_btmwrap-->
+                        </div><!--end of amountbox_topwrap-->
+                        <div class="textwrapper">
+                          <p>Total amount recieved by charity</p>
+                        </div><!--end of textwrapper-->
+                      <div class="clear"></div><!--end of clear-->
+                    </div><!--end of charityrecieved_btmwrap-->
+                </div><!--end of charityrecieved_topwrap-->
+            </div><!--end of charityrecieved_midwrap-->
+            <div class="charityrecieved_imgwrap">
+              <%= image_tag @spotlight.deed.charity.user.logo.url %>
+            </div><!--end of charityrecieved_imgwrap-->
+            <div class="clear"></div><!--end of clear-->
+			<%= link_to image_tag("/images/button_clickhereformoredetails.png", :alt => "Click here for MORE DETAILS"), deed_path(@spotlight.deed)%>
+        </div><!--end of greycontainer_midwrap-->
+    </div><!--end of greycontainer_btmwrap-->
+</div><!--end of greycontainer_topwrap-->
+<% end %>
+<% unless @donations.blank? %>
+<div class="lupdates_midwrap">
+  <div class="lupdates_btmwrap">
+      <div class="lupdates_topwrap">
+          <div class="colleft">
+              <img src="/images/txtimg_latestupdates.png" alt="Latest Updates" width="26" height="184" />
+            </div><!--end of colleft-->
+            <div class="colright">
+			
+			  <% @donations.each do |donation| %>
+              <div class="profilepic_wrap">
+				  <%= image_tag donation.user.logo.url, :width => 58, :height => 55%>
+                </div><!--end of profilepic_wrap-->
+                <div class="lupdates_contentwrap">
+                  <p><a href="#" class="donor"><%= donation.user.name %></a> bought <%= number_to_currency donation.amount %> give-on for <a href="#" class="charity"><%= donation.deed.charity.name %></a> sponsored by <a href="#" class="sponsor"><%= donation.deed.sponsor.name %></a>...</p>
+                    <p class="date"><%= donation.created_at.strftime "%m-%d-%Y" %></p>
+                </div><!--end of lupdates_contentwrap-->
+              <div class="clear"></div><!--end of clear-->
+			  <% end %>
+			
+			
+              <div class="clear"></div><!--end of clear-->
+            </div><!--end of colright-->
+          <div class="clear"></div><!--end of clear-->
+        </div><!--end of lupdates_topwrap-->
+    </div><!--end of lpudates_btmwrap-->
+</div><!--end of lupdates_midwrap-->
+<% end %>

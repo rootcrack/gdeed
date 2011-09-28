@@ -1,0 +1,21 @@
+<h5>previous &amp; other give-ons</h5>
+
+<% @deeds.each do |deed|%>
+  <div class="item_topwrap">
+  	<div class="item_btmwrap">
+      	<div class="item_midwrap">
+          	
+			<div class="giveons_logo">
+				<%= link_to image_tag(deed.sponsor.user.logo.url(:thumb)), sponsor_path(deed.sponsor) unless deed.sponsor.user.logo_file_name.blank? %>
+			</div><!--end of giveons_logo-->
+			
+            <div class="giveons_info">
+            	<p class="info"><%= link_to deed.sponsor.name, sponsor_path(deed.sponsor) %> donated <%= number_to_currency(deed.amount) %> to <%= link_to deed.charity.name, charity_path(deed.charity) %></p>
+                <p class="dateend">Ends on: <%= deed.ends_on.strftime("%m-%d-%Y") %></p>
+            </div><!--end of giveons_info-->
+            
+			<div class="clear"></div><!--end of clear-->
+          </div><!--end of item_midwrap-->
+      </div><!--end of item_btmwrap-->
+  </div><!--end of item_topwrap-->
+<% end %>

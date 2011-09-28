@@ -1,0 +1,27 @@
+<% if @story.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@story.errors.count, "error") %> prohibited this story from being saved:</h2>
+
+    <ul>
+    <% @story.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= f.label :title %>
+<div class="textbox_wrapper">
+	<%= f.text_field :title, :class => "textbox" %>
+</div><!--end of textbox_wrapper-->
+<%= f.label :content %>
+<div class="textarea_wrapper">
+	<%= f.text_area :content %>
+</div><!--end of textbox_wrapper-->
+<label>Story by:</label>
+<div class="textbox_wrapper">
+	<%= f.text_field :story_by, :class => "textbox" %>
+</div><!--end of textbox_wrapper-->
+<%= f.check_box :is_published, :class => "checkbox" %>
+<%= f.label :is_published, :class => "left" %>
+<div class="clear"></div><!--end of clear-->
+<input type="image" src="/images/button_save.png" alt="Save" class="button" />

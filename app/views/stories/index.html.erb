@@ -1,0 +1,19 @@
+<h1>Success stories</h1>
+
+<table>
+  <tbody>
+<% @stories.each do |story| %>
+  <tr>
+    <td><%= story.title %></td>
+    <td><%= story.story_by %></td>
+  </tr>
+<% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2">
+		<%= paginate @stories%>
+      </td>
+    </tr>
+  </tfoot>
+</table>

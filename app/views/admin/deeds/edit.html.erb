@@ -1,0 +1,37 @@
+<h1>Edit this Deed</h1>
+<div class="content">
+  <%= form_for @deed, :url => deed_path(@deed) do |f| %>
+  <div class="form_body">
+	<p>
+  	  <%= f.label "Deed Amount" %>
+  	  <%= f.text_field :amount %>
+  	</p>
+  	<p>
+  	  <%= f.label "Charity/Benefator" %>
+  	  <%= select "deed", "charity_id", Charity.all.collect {|c| [ c.name, c.id ] }, {:include_blank => true} %>
+  	</p>
+	<p>
+  	  <%= f.label "Number of Deeds" %>
+  	  <%= f.text_field :target_amount %>
+  	</p>
+	<p>
+  	  <%= f.label "Price of Deed" %>
+  	  <%= f.text_field :price %>
+  	</p>
+    <p>
+  	  <%= f.label :starts_on %>
+  	  <%= f.text_field :starts_on %>
+	  <%= f.label :ends_on %>
+	  <%= f.text_field :ends_on %>
+  	</p>
+	<p>
+	  <%= f.submit "Save" %>
+	</p>
+  </div>
+<% end %>
+</div>
+<script>
+  $(function(){
+    $('#deed_starts_on').datetime({ chainTo: '#deed_ends_on', value: '-7 days', chainOptions: { value: '+7 days' } });
+  });
+</script>

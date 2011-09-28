@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gratefuldeed</title>
+  <%= include_stylesheets :base, :app %>
+  <%= include_javascripts :base %>
+  <!--[if lte IE 6]>
+    <%= stylesheet_link_tag 'ie6fix.css' %>
+    <%= javascript_include_tag 'png.js' %>
+  <![endif]-->
+
+  <%= csrf_meta_tag %>
+</head>
+<body>
+  <div id="notification" class="notify"></div>
+  <%= render :partial => 'layouts/header' %>
+  <div class="bodycontainer">
+    <%= render :partial => "shared/left"%>
+    <div class="content">
+	  <p id="notice"><%= notice %></p>
+      <%= yield %>
+    </div>
+    <%= render :partial => "shared/right"%>
+  </div>
+  <%= render :partial => 'layouts/footer' %>
+</body>
+  <%
+    message_type, message_body = flash.first
+    safe_message_type = escape_javascript(message_type.to_s)
+    safe_message_body = escape_javascript(message_body.to_s)
+  %>
+  <% unless safe_message_body.empty? %>
+    <%= javascript_tag do %>
+      GratefulDeed.notify("<%= safe_message_body %>", {"type": "<%= safe_message_type %>"});
+    <% end %>
+  <% end %>
+  <script type="text/javascript">
+  (function() {
+    var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+    uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/k791eHJxOPAT6PWQJ4WOQ.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+  })();
+  </script>
+</html>

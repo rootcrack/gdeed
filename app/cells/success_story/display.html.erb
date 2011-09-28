@@ -1,0 +1,10 @@
+<h5>Success Stories</h5>
+<p>
+  <% @stories.each do |story| %>
+  <div class="stories">
+      <p class="story"><%= story.title %></p> 
+      <p class="author">by: <%= story.story_by %></p> 
+      <p class="readmore"><%= link_to "Read More", story_path(story)%></p>
+  </div><!--end of stories-->
+  <% end %>
+</p>

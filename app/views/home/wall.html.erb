@@ -1,0 +1,15 @@
+<h1>Benefactor Wall</h1>
+<div class="benefactors">
+	<ul>
+		<% @benefactors.each do |benefactor| %>
+		<li>
+		  <%= image_tag(benefactor.deed.charity.user.logo.url) %>
+		  <%= image_tag(benefactor.deed.sponsor.user.logo.url) %>
+		  <%= benefactor.created_at.strftime("%m/%d/%Y") %>
+		  <p>
+			<%= benefactor.name %> donated <%= number_to_currency benefactor.amount%> to trigger <%= number_to_currency benefactor.deed.amount %> to Charity. Sponsored by <%= benefactor.deed.sponsor.name %>.
+		  </p>
+		</li>
+		<% end %>
+	</ul>
+</div>

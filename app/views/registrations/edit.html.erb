@@ -1,0 +1,66 @@
+<div class="edituser">
+	<div class="form_heading">
+    	<h5>Edit <%= resource_name.to_s.humanize %></h5>
+    </div><!--end of form_heading-->
+    <div class="form_leftwrap">
+    	<div class="form_rightwrap">
+        	<div class="form_midwrap">
+            	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :multipart => true }) do |f| %>
+					<p><%= devise_error_messages! %></p>
+					<div class="logowrapper">
+						<% unless @user.logo_file_name.blank? %>
+					      <%= image_tag(@user.logo.url(:thumb)) %>
+					    <% end %>
+					</div><!--end of logowrapper-->
+					<div class="browselogo_wrapper">
+						<%= f.file_field :logo %>
+					</div><!--end of browselogo_wrapper-->
+					<div class="clear"></div><!--end of clear-->
+                	<label>Full Name:</label>
+                    <div class="textbox_wrapper">
+						<%= f.text_field :name, :class => "textbox" %>
+                    </div><!--end of textbox_wrapper-->
+					<label>User Name:</label>
+                    <div class="textbox_wrapper">
+                    	<%= f.text_field :username, :class => "textbox" %>
+                    </div><!--end of textbox_wrapper-->
+					<label>Email Address:</label>
+                    <div class="textbox_wrapper">
+                    	<%= f.email_field :email, :class => "textbox" %>
+                    </div><!--end of textbox_wrapper-->
+					<p class="infonote">We promise not to share your email address to others.</p>
+					<label>Password:</label>
+                    <div class="textbox_wrapper">
+                    	<%= f.password_field :password, :class => "textbox" %>
+                    </div><!--end of textbox_wrapper-->
+					<label>Password Confirmation:</label>
+                    <div class="textbox_wrapper">
+                    	<%= f.password_field :password_confirmation, :class => "textbox" %>
+                    </div><!--end of textbox_wrapper-->
+					<label>Current Password:</label>
+                    <div class="textbox_wrapper">
+                    	<%= f.password_field :current_password, :class => "textbox" %>
+                    </div><!--end of textbox_wrapper-->
+					<p class="infonote">Please leave this field if you're not gonna change your password.</p>
+					<label>Zipcode:</label>
+                    <div class="textbox_wrapper">
+                    	<%= f.text_field :zipcode, :class => "textbox" %>
+                    </div><!--end of textbox_wrapper-->
+                    <div class="form_btmwrap">
+                        <input type="image" src="/images/button_update.png" alt="Update" class="button" />
+                        <ul class="formoption">
+                            <li><p class="bold">Cancel My Account</p></li>
+                            <li>
+								<p><span>Unhappy?</span>&nbsp;
+									<%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>
+								</p>
+							</li>
+                            <li><%= link_to "Back", :back %></li>
+                        </ul>
+                        <div class="clear"></div><!--end of clear-->
+                    </div><!--end of form_btmwrap-->
+                <% end %>
+            </div><!--end of form_midwrap-->
+        </div><!--end of form_rightwrap-->
+    </div><!--end of form_leftwrap-->
+</div><!--end of edituser-->

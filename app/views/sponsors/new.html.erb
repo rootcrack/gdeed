@@ -1,0 +1,46 @@
+<div class="newdeed">
+<div class="form_heading">
+	<h5>Be a Sponsor</h5>
+	</div><!--end of form_heading-->
+	<div class="form_leftwrap">
+		<div class="form_rightwrap">
+	    	<div class="form_midwrap">
+	        	<%= form_for @sponsor, :url => sponsors_path do |f| %>
+	            	<%= f.label :name %>
+	                <div class="textbox_wrapper">
+	                	<%= f.text_field :name, :class => "textbox" %>
+	                </div><!--end of textbox_wrapper-->
+					<%= f.label :address %>
+	                <div class="textbox_wrapper">
+	                	<%= f.text_area :address, :class => "textbox"  %>
+	                </div><!--end of textbox_wrapper-->
+					<label>City:</label>
+	                <div class="textbox_wrapper">
+	                	<%= f.text_field :city, :class => "textbox"  %>
+	                </div><!--end of textbox_wrapper-->
+					<label>State:</label>
+	                <div class="textbox_wrapper">
+	                	<%= f.text_field :state, :class => "textbox"  %>
+	                </div><!--end of textbox_wrapper-->
+					<label>Zipcode:</label>
+	                <div class="textbox_wrapper">
+	                	<%= f.text_field :zipcode, :class => "textbox"  %>
+	                </div><!--end of textbox_wrapper-->
+					<label>Contact Name:</label>
+	                <div class="textbox_wrapper">
+	                	<%= f.text_field :contact_name, :class => "textbox"  %>
+	                </div><!--end of textbox_wrapper-->
+					<label>Contact Phone:</label>
+	                <div class="textbox_wrapper">
+	                	<%= f.text_field :contact_phone, :class => "textbox"  %>
+	                </div><!--end of textbox_wrapper-->
+					<label>Business Phone:</label>
+	                <div class="textbox_wrapper">
+	                	<%= f.text_field :business_phone, :class => "textbox"  %>
+	                </div><!--end of textbox_wrapper-->
+	                <input type="image" src="/images/button_save.png" alt="Save" class="button" />
+	            <% end %>
+	        </div><!--end of form_midwrap-->
+	    </div><!--end of form_rightwrap-->
+	</div><!--end of form_leftwrap-->
+</div><!--end of newdeed-->

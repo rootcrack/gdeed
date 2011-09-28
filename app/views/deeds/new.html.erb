@@ -1,0 +1,44 @@
+<div class="form_wrapper">
+	<div class="form_heading">
+		<h5>Create a Grateful Deed</h5>
+	</div><!--end of form_heading-->
+	<div class="form_leftwrap">
+		<div class="form_rightwrap">
+	    	<div class="form_midwrap">
+	        	<%= form_for @deed, :url => deeds_path do |f| %>
+	            	<%= f.label "Deed Amount" %>
+	                <div class="textbox_wrapper">
+	                	<%= f.text_field :amount, :class => "textbox" %>
+	                </div><!--end of textbox_wrapper-->
+	                <label>Charity Benefactor:</label>
+	                <div class="textbox_wrapper">
+	                	<%= select "deed", "charity_id", Charity.all.collect {|c| [ c.name, c.id ] }, {:include_blank => true} %>
+	                </div><!--end of textbox_wrapper-->
+	                <label>Number of Deeds:</label>
+	                <div class="textbox_wrapper">
+	                	<%= f.text_field :target_amount, :class => "textbox" %>
+	                </div><!--end of textbox_wrapper-->
+	                <label>Price of Deeds:</label>
+	                <div class="textbox_wrapper">
+	                	<%= f.text_field :price, :class => "textbox" %>
+	                </div><!--end of textbox_wrapper-->
+	                <label>Starts on:</label>
+	                <div class="textbox_wrapper">
+	                	<%= f.text_field :starts_on, :class => "textbox" %>
+	                </div><!--end of textbox_wrapper-->
+	                <label>Ends on:</label>
+	                <div class="textbox_wrapper">
+	                	<%= f.text_field :ends_on, :class => "textbox" %>
+	                </div><!--end of textbox_wrapper-->
+	                <input type="image" src="/images/button_save.png" alt="Save" class="button" />
+	            <% end %>
+            </div><!--end of form_midwrap-->
+        </div><!--end of form_rightwrap-->
+    </div><!--end of form_leftwrap-->
+</div><!--end of form_wrapper-->
+
+<script>
+  $(function(){
+    $('#deed_starts_on').datetime({ chainTo: '#deed_ends_on', value: '-7 days', chainOptions: { value: '+7 days' } });
+  });
+</script>

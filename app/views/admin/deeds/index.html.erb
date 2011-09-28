@@ -1,0 +1,55 @@
+<h2>Deeds</h2>
+<table border="1">
+  <thead>
+	<tr>
+		<th>Sponsor<th>
+		<th>Charity<th>
+		<th>Starts On<th>
+		<th>Ends On<th>
+		<th>Amount<th>
+		<th>Price<th>
+		<th>Target<th>
+		<th>Status<th>
+		<th>&nbsp;<th>
+	</tr>
+  </thead>
+  <tbody border="1">
+	<% unless @spotlight.nil? %>
+    <tr>
+	  <td><%= @spotlight.deed.sponsor.name %><td>
+	  <td><%= @spotlight.deed.charity.name %><td>
+	  <td><%= @spotlight.deed.starts_on %><td>
+	  <td><%= @spotlight.deed.ends_on %><td>
+	  <td><%= number_to_currency(@spotlight.deed.amount) %><td>
+ 	  <td><%= number_to_currency(@spotlight.deed.price) %><td>
+	  <td><%= @spotlight.deed.target_amount %><td>
+	  <td><%= @spotlight.deed.status %><td>
+	  <td>&nbsp;</td>
+	</tr>
+	<% end %>
+  <% @deeds.each do |deed| %>
+	<tr class="<%= cycle "even", "odd" %>">
+	  <td><%= deed.sponsor.name %><td>
+	  <td><%= deed.charity.name %><td>
+	  <td><%= deed.starts_on %><td>
+	  <td><%= deed.ends_on %><td>
+	  <td><%= number_to_currency(deed.amount) %><td>
+ 	  <td><%= number_to_currency(deed.price) %><td>
+	  <td><%= deed.target_amount %><td>
+	  <td id="status_<%= deed.id%>"><%= deed.status %><td>
+	  <td>
+		<%= link_to "Activate", activate_admin_deed_path(deed), 'data-remote' => true, 'data-method' => 'get' %>
+		<%= link_to "Deny", cancel_admin_deed_path(deed), 'data-remote' => true, 'data-method' => 'get'%>
+		<%= link_to "Hold", freeze_admin_deed_path(deed), 'data-remote' => true, 'data-method' => 'get'%>
+		<%= link_to "Set as Main", spotify_admin_deed_path(deed)%>
+		<%= link_to "Edit", edit_admin_deed_path(deed)%>
+	  </td>
+	</tr>
+  <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+	  <td colspan=9><%= paginate @deeds %><td>
+	</tr>
+  </tfoot>
+</table>

@@ -1,0 +1,41 @@
+<div class="forgotpwd">
+	<div class="form_heading">
+    	<h5>Forgot your password?</h5>
+    </div><!--end of form_heading-->
+    <div class="form_leftwrap">
+    	<div class="form_rightwrap">
+        	<div class="form_midwrap">
+            	<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+					<p><%= devise_error_messages! %></p>
+                	<%= f.label :email %>
+                    <div class="textbox_wrapper">
+						<%= f.email_field :email, :class => "textbox" %>
+                    </div><!--end of textbox_wrapper-->
+                    <div class="form_btmwrap">
+                        <input type="image" src="/images/button_sendresetpasswordinstructions.png" alt="Send Me Reset Password Instructions" class="button" />
+                        <ul class="formoption">
+                            <li>
+								<%- if controller_name != 'sessions' %>
+								  <%= link_to "Sign in", new_session_path(resource_name) %><br />
+								<% end -%>
+							</li>
+                            <li>
+								<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+								  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+								<% end -%>
+							</li>
+                            <li>
+								<%- if devise_mapping.omniauthable? %>
+								  <%- resource_class.omniauth_providers.each do |provider| %>
+								    <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %><br />
+								  <% end -%>
+								<% end -%>
+							</li>
+                        </ul>
+                        <div class="clear"></div><!--end of clear-->
+                    </div><!--end of form_btmwrap-->
+                <% end %>
+            </div><!--end of form_midwrap-->
+        </div><!--end of form_rightwrap-->
+    </div><!--end of form_leftwrap-->
+</div><!--end of forgotpwd-->

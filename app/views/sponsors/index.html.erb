@@ -1,0 +1,11 @@
+<h1>Sponsors</h1>
+<div id="sponsors">
+  <ul>
+  <% @sponsors.each do |sponsor| %>
+    <li>
+	  <%= link_to image_tag(sponsor.user.logo.url), sponsor_path(sponsor) %><br/>
+      <%= link_to sponsor.name, sponsor_path(sponsor) %>
+    </li>
+  <% end %>
+  </ul>
+</div>

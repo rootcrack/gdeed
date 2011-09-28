@@ -1,0 +1,58 @@
+<% unless @deed.nil? %>
+<h1>Summary</h1>
+<div>
+  <p> 
+  	<%= number_to_currency @deed.price%> for <%= number_to_currency @deed.contribution%> donation to:
+  </p>
+  <p>
+    <%= image_tag(@deed.charity.user.logo.url, :size => '100x100') %><br/>
+    <%= @deed.charity.name %>
+  </p> 
+  <p>
+    Sponsored by: </br>
+    <%= image_tag(@deed.sponsor.user.logo.url) %><br/>
+    <%= @deed.sponsor.name %>
+  </p>
+</div>
+<% end %>
+<h2>Purchase</h2>
+<%= form_for @purchase, :url => purchases_path do |f| %>
+  <p>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+  </p>
+  <p>
+	<%= f.label :email %>
+	<%= f.text_field :email %>
+  </p>
+  <p>
+	<%= f.label :card_number %>
+	<%= f.text_field :card_number %>
+  </p>
+  <p>
+    <%= f.label :card_verification, "Card Verification Value (CVV)" %><br />
+    <%= f.text_field :card_verification %>
+  </p>
+  <p>
+    <%= f.label :card_expires_on %><br />
+	<%= f.date_select :card_expires_on, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true %>
+  </p>
+  <p>
+	<%= f.label :address %>
+	<%= f.text_field :address %>
+  </p>
+  <p>
+	<%= f.label :city %>
+	<%= f.text_field :city %>
+  </p>
+  <p>
+	<%= f.label :state %>
+	<%= f.select :state, Carmen::state_codes('US') %>
+  </p>
+  <p>
+	<%= f.label :zipcode %>
+	<%= f.text_field :zipcode %>
+  </p>
+  <%= f.hidden_field :deed_id %>
+  <p><%= f.submit :Submit%></p>
+<% end %>

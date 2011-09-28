@@ -1,0 +1,1 @@
+$('#status_<%= @sponsor.id%>').html('yes <%= link_to "Deny", deny_admin_sponsor_path(@sponsor), 'data-remote' => true, 'data-method' => 'get' if @sponsor.is_verified %>');
